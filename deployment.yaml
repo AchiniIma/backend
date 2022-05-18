@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productmanagement-deployment
+  labels:
+    app: productmanagement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productmanagement
+  template:
+    metadata:
+      labels:
+        app: productmanagement
+    spec:
+      containers:
+        - name: nodeserver
+          image: achiniimalka/productmanagement:latest
+          ports:
+          - containerPort: 8087
